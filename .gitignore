@@ -1,0 +1,23 @@
+# Go build/test artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace/cache
+bin/
+pkg/
+.gocache/
+
+# Dependency/vendor artifacts
+vendor/
+
+# Editor/OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
