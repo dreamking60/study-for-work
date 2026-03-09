@@ -1,10 +1,23 @@
 package main
+
 import (
-    "fmt"
-    "time"
+	"fmt"
+
+	"week01-cli/internal/config"
+	"week01-cli/internal/model"
 )
 
 func main() {
-    fmt.Println("Hello, World!")
-    fmt.Println("Time: ", time.Now())
+	cfg := config.Default()
+
+	task := model.Task{
+		ID:     1,
+		Name:   "learn-go-day2",
+		Status: "running",
+		Tags:   []string{"go", "day2"},
+		Meta:   map[string]string{"owner": "dreamking"},
+	}
+
+	fmt.Printf("App=%s Env=%s Port=%d\n", cfg.AppName, cfg.Env, cfg.Port)
+	fmt.Println(task.Summary())
 }
