@@ -222,3 +222,25 @@ The go import multiple package require () but not {}.
 cmd/app/main.go:2:8: missing import path
 ```
 
+## Day2 Deliverables (Project)
+- Added `internal/config/config.go` with `Config` struct and `Default()` function.
+- Added `internal/model/task.go` with `Task` struct and `Summary()` method.
+- Updated `cmd/app/main.go` to import and use both `config` and `model`.
+- Added English field-level comments in `Task` to improve readability.
+
+## Day2 Validation
+```bash
+go fmt ./...
+go run ./cmd/app
+go test ./...
+```
+
+Expected runtime output:
+```
+App=demo, Env=local, Port=8765
+Task[1] learning-go-day2 status=running tags=1
+```
+
+## Reflection
+- Learned the difference between runtime config (`Config`) and business model (`Task`).
+- Learned why `fmt.Sprintf` is used when a function must return a string.

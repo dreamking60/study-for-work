@@ -1,6 +1,6 @@
 package config
 
-// Config stores runtime settings, not business data.
+// Config stores runtime settings
 type Config struct {
 	AppName string
 	Env     string

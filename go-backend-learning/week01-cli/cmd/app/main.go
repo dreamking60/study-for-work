@@ -12,12 +12,13 @@ func main() {
 
 	task := model.Task{
 		ID:     1,
-		Name:   "learn-go-day2",
+		Name:   "learning-go-day2",
 		Status: "running",
-		Tags:   []string{"go", "day2"},
-		Meta:   map[string]string{"owner": "dreamking"},
+		Tags:   []string{"go"},
+		Meta:   map[string]string{"owner": "dreamking60"},
 	}
 
-	fmt.Printf("App=%s Env=%s Port=%d\n", cfg.AppName, cfg.Env, cfg.Port)
+	fmt.Printf("App=%s, Env=%s, Port=%d\n", cfg.AppName, cfg.Env, cfg.Port)
 	fmt.Println(task.Summary())
+
 }
