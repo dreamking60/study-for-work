@@ -94,6 +94,30 @@ func TestParseByExt_TOML_Success(t *testing.T) {
 	}
 }
 
+func TestParseByExt_YAML_InvalidContent(t *testing.T) {
+	_, err := parseByExt(".yaml", []byte("appname: [demo\n"))
+	expect := "parse config as yaml"
+	if err == nil {
+		t.Fatal("expected error for invalid YAML content, got nil")
+	}
+
+	if !strings.Contains(err.Error(), expect) {
+		t.Errorf("expected error containing %q, got %q", expect, err.Error())
+	}
+}
+
+func TestParseByExt_TOML_InvalidContent(t *testing.T) {
+	_, err := parseByExt(".toml", []byte("AppName = \"demo\nEnv = \"prod\"\n"))
+	expect := "parse config as toml"
+	if err == nil {
+		t.Fatal("expected error for invalid TOML content, got nil")
+	}
+
+	if !strings.Contains(err.Error(), expect) {
+		t.Errorf("expected error containing %q, got %q", expect, err.Error())
+	}
+}
+
 func TestParseByExt_UnsupportedExt(t *testing.T) {
 	_, err := parseByExt(".ini", []byte("appname=demo"))
 	expect := "unsupported type"

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"strings"
 	"testing"
 )
@@ -64,5 +65,43 @@ func TestParseArgsFrom_InvalidPort(t *testing.T) {
 
 	if !strings.Contains(err.Error(), expect) {
 		t.Errorf("expected error containing %q, got %q", expect, err.Error())
+	}
+}
+
+func TestParseArgsFrom_ParseError(t *testing.T) {
+	_, err := parseArgsFrom([]string{"--port", "abc"})
+	expect := "parse args"
+	if err == nil {
+		t.Fatal("expected error for invalid flag value, got nil")
+	}
+
+	if !strings.Contains(err.Error(), expect) {
+		t.Errorf("expected error containing %q, got %q", expect, err.Error())
+	}
+}
+
+func TestParseArgs_UsesOSArgs(t *testing.T) {
+	oldArgs := os.Args
+	t.Cleanup(func() {
+		os.Args = oldArgs
+	})
+
+	os.Args = []string{"app", "--env", "test", "--port", "9000", "--app", "cli-demo"}
+
+	args, err := parseArgs()
+	if err != nil {
+		t.Fatalf("expected no error, got %q", err.Error())
+	}
+
+	if args.Env != "test" {
+		t.Errorf("expected Env %q, got %q", "test", args.Env)
+	}
+
+	if args.Port != 9000 {
+		t.Errorf("expected Port %d, got %d", 9000, args.Port)
+	}
+
+	if args.AppName != "cli-demo" {
+		t.Errorf("expected AppName %q, got %q", "cli-demo", args.AppName)
 	}
 }
