@@ -86,7 +86,7 @@ func TestParseArgs_UsesOSArgs(t *testing.T) {
 		os.Args = oldArgs
 	})
 
-	os.Args = []string{"app", "--env", "test", "--port", "9000", "--app", "cli-demo"}
+	os.Args = []string{"app", "run", "--env", "test", "--port", "9000", "--app", "cli-demo"}
 
 	args, err := parseArgs()
 	if err != nil {

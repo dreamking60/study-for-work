@@ -14,7 +14,7 @@ type Args struct {
 }
 
 func parseArgs() (Args, error) {
-	return parseArgsFrom(os.Args[1:])
+	return parseArgsFrom(os.Args[2:])
 }
 
 func parseArgsFrom(argv []string) (Args, error) {
