@@ -31,7 +31,6 @@
 - https://go.dev/tour/concurrency/1
 - https://go.dev/tour/concurrency/2
 - https://go.dev/blog/context
-- https://pkg.go.dev/net
 - https://pkg.go.dev/net/http
 
 ## 本周实现目标
