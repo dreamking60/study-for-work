@@ -1,6 +1,8 @@
 package room
 
+import "edge-gateway/internal/session"
+
 type Room struct {
-	ID      string
-	Members map[string]string
+	ID	string
+	Members	map[string]*session.Session
 }
